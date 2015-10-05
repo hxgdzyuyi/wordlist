@@ -1,0 +1,23 @@
+header
+  .container
+    h1 单词表生成器
+    hr
+
+main
+  .container
+    .wordlist-source-action style="display:none"
+      button.btn.btn-warning.act-expand type="button"
+        | 录入数据
+    .wordlist-source
+      form.wordlist-form
+        .form-group
+          textarea.form-control rows="10" name="content"
+            | spaCy is a library for industrial-strength natural language processing in Python and Cython.
+            | It features state-of-the-art speed and accuracy, a concise API, and great documentation. If you're a small company doing NLP, we want spaCy to seem like a minor miracle.
+        .form-action
+          button.btn.btn-primary type="submit" 提交
+          button.btn.btn-warning.act-collapse type="button" 收起
+    hr
+    .wordlist-result
+      | 暂时没有数据
+    .panel

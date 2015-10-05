@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151005105808) do
+ActiveRecord::Schema.define(version: 20151006045443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,11 +25,15 @@ ActiveRecord::Schema.define(version: 20151005105808) do
     t.datetime "updated_at"
   end
 
+  add_index "corpus", ["word"], name: "index_corpus_on_word", using: :btree
+
   create_table "words", force: true do |t|
     t.string   "word"
     t.text     "definition"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "words", ["word"], name: "index_words_on_word", using: :btree
 
 end

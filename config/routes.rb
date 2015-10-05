@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  root 'wordlist#index'
+
+  get 'wordlist/index'
+
+  post 'wordlist/get_wordlist' => 'wordlist#get_wordlist', :defaults => { :format => :json }
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

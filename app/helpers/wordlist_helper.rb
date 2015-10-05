@@ -1,0 +1,2 @@
+module WordlistHelper
+end
