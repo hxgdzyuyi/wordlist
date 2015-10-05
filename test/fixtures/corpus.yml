@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  word: MyString
+  frequency: 1
+  pos: MyString
+  occured_number_in_file: 1
+
+two:
+  word: MyString
+  frequency: 1
+  pos: MyString
+  occured_number_in_file: 1

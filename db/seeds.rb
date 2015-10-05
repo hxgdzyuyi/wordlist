@@ -5,6 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
 def create_dictionary_info
   dict_file = File.expand_path('../fixtures/dict.json', __FILE__)
   parsed_dict = JSON.parse(File.read(dict_file))
@@ -19,4 +20,17 @@ def create_dictionary_info
   )
 end
 
+def create_word_frequency_info()
+  bnc_list_file = File.expand_path('../fixtures/bnc-list/all.al.o5', __FILE__)
+  bnc_list = []
+  File.open(bnc_list_file).each_line  do |line|
+    bnc_list.push Hash[
+      [:frequency, :word, :pos, :occured_number_in_file].zip(line.split(/\s/))
+    ]
+  end
+  Corpus.delete_all
+  Corpus.create(bnc_list)
+end
+
 create_dictionary_info()
+create_word_frequency_info()
