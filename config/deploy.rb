@@ -34,7 +34,7 @@ namespace :deploy do
     run "mkdir -p #{shared_path}/config"
     run "mkdir -p #{shared_path}/public/uploads"
     run "mkdir -p #{shared_path}/node_modules"
-    put File.read(".env"), "#{shared_path}/.env"
+    put File.read(".env_template"), "#{shared_path}/.env"
     puts "Now edit the config files in #{shared_path}."
   end
   after "deploy:setup", "deploy:setup_config"
@@ -45,12 +45,6 @@ namespace :deploy do
     run "ln -nfs #{shared_path}/.env #{release_path}/.env"
   end
   after "deploy:finalize_update", "deploy:symlink_config"
-
-  desc "Install node modules non-globally"
-  task :npm_install, roles: :app do
-    run "cd #{release_path} && npm install"
-  end
-  after "deploy:update_code", "deploy:npm_install"
 
   desc "Make sure local git is in sync with remote."
   task :check_revision, roles: :web do
