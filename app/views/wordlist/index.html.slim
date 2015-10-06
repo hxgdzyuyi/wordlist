@@ -21,3 +21,15 @@ main
     .wordlist-result
       | 暂时没有数据
     .panel
+
+
+script type="template/html" id="tmpl-wordlist-result"
+  .bd
+    ul.nav.nav-tabs
+      li.active data-toggle="tab"
+        a href="#wordlist-result-content" data-toggle="tab" 单词表文字
+      li data-toggle="tab"
+        a href="#wordlist-result-list" data-toggle="tab" 单词表
+    .tab-content
+      #wordlist-result-content.tab-pane.fade.active.in  <%= parsedContent%>
+      #wordlist-result-list.tab-pane.fade <%= wordlistContent%>

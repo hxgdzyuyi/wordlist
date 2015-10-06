@@ -53,6 +53,13 @@ Parser.prototype.getContent = function() {
   }).join('')
 }
 
+Parser.prototype.getWordlistContent = function() {
+  var tmpl = _.template('<dl><dt><%- word%></dt><dd><%- definition%></dd></dl>')
+  return _.map(this.wordlist, function(item, key) {
+    return tmpl({word: key, definition: item.definition})
+  }).join('')
+}
+
 $(function() {
   var wordlistSource = $('.wordlist-source')
     , wordlistSourceAction = $('.wordlist-source-action')
@@ -94,9 +101,15 @@ $(function() {
     , data: JSON.stringify(wordlist)
     }).done(function(wordlist) {
       var parser = new Parser(content, wordlist)
-      wordlistResult.html(
-        parser.getContent()
-      )
+        , parsedContent = parser.getContent()
+        , wordlistResultTmpl = _.template($('#tmpl-wordlist-result').html())
+
+      wordlistResult.html(wordlistResultTmpl({
+        parsedContent: parsedContent
+      , wordlistContent: parser.getWordlistContent()
+      }))
+
+      btnCollapse.click()
     })
   })
 })

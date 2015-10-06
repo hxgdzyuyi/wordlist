@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap-sprockets";
 @import "bootstrap";
 @media (min-width: 1200px) {
   .container {

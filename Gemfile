@@ -26,8 +26,11 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 gem 'lemmatizer', '~> 0.1.1'
-gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
+gem 'bootstrap-sass', '~> 3.3.5'
+
 gem 'slim', '~> 3.0.6'
+gem 'underscore-rails'
+gem 'jquery-turbolinks'
 
 
 # Use ActiveModel has_secure_password
