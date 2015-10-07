@@ -6,6 +6,7 @@ function unique(array) {
 
 function Parser(content, wordlist) {
   this.str = $.trim(content)
+  this.rawString = this.str
   this.stash = []
   this.wordlist = wordlist
 }
@@ -48,6 +49,13 @@ Parser.prototype.skip = function(len) {
 Parser.prototype.getContent = function() {
   while(this.str.length) { this.next() }
   var paragraphs = this.stash.join('').split(/[\r\n]/g)
+  return paragraphs.map(function(paragraph) {
+    return '<p>' + paragraph + '</p>'
+  }).join('')
+}
+
+Parser.prototype.getRawContent = function() {
+  var paragraphs = this.rawString.split(/[\r\n]/g)
   return paragraphs.map(function(paragraph) {
     return '<p>' + paragraph + '</p>'
   }).join('')
@@ -107,6 +115,7 @@ $(function() {
       wordlistResult.html(wordlistResultTmpl({
         parsedContent: parsedContent
       , wordlistContent: parser.getWordlistContent()
+      , rawContent: parser.getRawContent()
       }))
 
       btnCollapse.click()

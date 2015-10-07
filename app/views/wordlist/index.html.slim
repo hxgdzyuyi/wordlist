@@ -9,11 +9,13 @@ main
       button.btn.btn-warning.act-expand type="button"
         | 录入数据
     .wordlist-source
+      .bs-callout.bs-callout-info
+        h4 使用说明
+        p 将英文放入输入框中就会自动判断，生成带有翻译的生僻词单词表。
       form.wordlist-form
         .form-group
           textarea.form-control rows="10" name="content"
-            | spaCy is a library for industrial-strength natural language processing in Python and Cython.
-            | It features state-of-the-art speed and accuracy, a concise API, and great documentation. If you're a small company doing NLP, we want spaCy to seem like a minor miracle.
+            | Tumble down the rabbit hole and find yourself in an inky black-and-white wonderland. This interactive activity book takes you on a ramble through a secret garden created in beautifully detailed pen-and-ink illustrations - all waiting to be brought to life through colouring, but each also sheltering all kinds of tiny creatures just waiting to be found. And there are also bits of the garden that still need to be completed by you. Appealing to all ages, the intricately-realized world of the Secret Garden is both beautiful and inspirational.
         .form-action
           button.btn.btn-primary type="submit" 提交
           button.btn.btn-warning.act-collapse type="button" 收起
@@ -25,10 +27,13 @@ main
 script type="template/html" id="tmpl-wordlist-result"
   .bd
     ul.nav.nav-tabs
-      li.active data-toggle="tab"
-        a href="#wordlist-result-content" data-toggle="tab" 单词表文字
       li data-toggle="tab"
+        a href="#wordlist-result-raw" data-toggle="tab" 原文
+      li.active data-toggle="tab"
         a href="#wordlist-result-list" data-toggle="tab" 单词表
+      li data-toggle="tab"
+        a href="#wordlist-result-content" data-toggle="tab" 译文
     .tab-content
-      #wordlist-result-content.tab-pane.fade.active.in  <%= parsedContent%>
-      #wordlist-result-list.tab-pane.fade <%= wordlistContent%>
+      #wordlist-result-list.tab-pane.fade.active.in <%= wordlistContent%>
+      #wordlist-result-raw.tab-pane.fade <%= rawContent%>
+      #wordlist-result-content.tab-pane.fade  <%= parsedContent%>
