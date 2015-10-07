@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'dotenv-rails', :groups => [:development, :test, :production]
 gem 'capistrano'
 gem 'unicorn'
-gem 'rvm-capistrano'
+gem 'rvm-capistrano', require: false
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
